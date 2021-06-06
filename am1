@@ -1,0 +1,27 @@
+package com.cpmpany;
+import java.lang.reflect.Method;
+
+class A {
+    private void display()
+    {
+        System.out.println("private method is invoked");
+    }
+}
+class B extends A {
+    static void display()
+    {
+        super.display();
+        System.out.println("sub class")
+    }
+}
+
+public class PrivateExample4{
+    public static void main(String[] args)throws Exception{
+        Class b = new Class();
+        b.display();
+        Class c = Class.forName("A");
+        Object o= c.newInstance();
+        Method m =c.getDeclaredMethod("display", null);
+        m.setAccessible(true);
+        m.invoke(o, null);
+    }
